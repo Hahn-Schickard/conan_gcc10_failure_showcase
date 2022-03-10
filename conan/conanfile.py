@@ -5,8 +5,8 @@ import os
 
 
 class PackageConan(ConanFile):
-    license = ""
-    topics = ("gcc10_failure_showcase")
+    license = "Apache 2.0"
+    topics = ("conan_package_failure","gcc10_failure_showcase")
     build_requires = "gtest/1.10.0"
     requires = []
     settings = "cppstd", "os", "compiler", "build_type", "arch"
