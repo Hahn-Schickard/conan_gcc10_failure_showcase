@@ -6,7 +6,7 @@ import os
 
 class PackageConan(ConanFile):
     license = "Apache 2.0"
-    topics = ("conan_package_failure","gcc10_failure_showcase")
+    topics = ("conan_package_failure", "gcc10_failure_showcase")
     build_requires = "gtest/1.10.0"
     requires = []
     settings = "cppstd", "os", "compiler", "build_type", "arch"
@@ -44,8 +44,7 @@ class PackageConan(ConanFile):
             return self._cmake
         self._cmake = CMake(self)
         self._cmake.verbose = True
-        self._cmake.configure(build_dir=os.path.join(
-            self.build_folder, "build"))
+        self._cmake.configure()
         return self._cmake
 
     def build(self):
