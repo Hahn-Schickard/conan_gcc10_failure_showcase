@@ -4,8 +4,6 @@ set(THIS GCC10_Failure)
 
 project(${THIS} CXX) 
 
-enable_testing()
-
 set(INCLUDES_DIR "${PROJECT_SOURCE_DIR}/includes")
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -45,7 +43,12 @@ endif()
 
 
 add_subdirectory(sources)
-add_subdirectory(unit_tests)
+
+option(RUN_TESTS "Enables Unit tests runner (Requires GTest framework)" ON)
+if(RUN_TESTS)
+        enable_testing()
+        add_subdirectory(unit_tests)
+endif()
 
 if(EXISTS ${PROJECT_SOURCE_DIR}/${PROJECT_NAME}Config.cmake.in)
         message(STATUS "Pacakge input file: ${PROJECT_SOURCE_DIR}/${PROJECT_NAME}Config.cmake.in already exists, removing it!")
