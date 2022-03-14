@@ -24,6 +24,7 @@ class PackageConan(ConanFile):
         "../conanfile.txt",
     ]
     _cmake = None
+    generators = "cmake"
 
     @property
     def _source_subfolder(self):
